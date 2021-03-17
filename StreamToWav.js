@@ -57,7 +57,7 @@ const flattenArray = (channelBuffer, recordingLength) => {
       view.setUint32(40, flatBuffer.length * 2, true);
       
       // write the PCM samples
-      const index = 44;
+      let index = 44;
       const volume = 1;
       for (let i = 0; i < flatBuffer.length; i++) {
         view.setInt16(index, flatBuffer[i] * (0x7fff * volume), true);
@@ -72,13 +72,13 @@ const flattenArray = (channelBuffer, recordingLength) => {
       //   audio.play();
       
       // file download
-      const file = new File([blob], "audio.wav");
-      const fileURL = URL.createObjectURL(file);
-      const a = document.createElement("a");
-      a.href = fileURL;
-      a.download = `audio_${+new Date()}.wav`;
-      a.style.display = "none";
-      a.click();
+//       const file = new File([blob], "audio.wav");
+//       const fileURL = URL.createObjectURL(file);
+//       const a = document.createElement("a");
+//       a.href = fileURL;
+//       a.download = `audio_${+new Date()}.wav`;
+//       a.style.display = "none";
+//       a.click();
     });
   },
   (error) => {
